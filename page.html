@@ -15,42 +15,49 @@
 
 <body>
 
-  <table class="biggerDiv"><tr class="tr">
-    <td   class="td1 div">
-      <div id="div111" class="div111">
-      </div>
-      <br>
-      <div id="div112" class="div112">
-
-        <table class="timeTable"><tr>
-          <td><i class="lni lni-alarm-clock"></i></td>
-          <td id="timeCell"></td>
-        </tr></table>
-
-        <br>
-
-        <div id="dateCell">
-          <i class="fa fa-calendar"></i>
+  <table class="biggerDiv">
+    <tr class="tr">
+      <td class="td1 div">
+        <div id="div111" class="div111">
         </div>
+        <br>
+        <div id="div112" class="div112">
 
-      </div>
-    </td>
-    <td class="borderCell td2">
-      <h3 class="formHeading">Enter Details</h3>
-      <form action="">
-        <label for="">Name</label><br>
-        <input type="text" name="" value=""><br>
-        <label for="">Mobile number (whatsapp number)</label><br>
-        <input type="number"><br>
-        <label for="">Choose Service</label><br>
-        <input type="text"><br><br>
-        <button >Confirm</button>
-      </form>
-    </td>
-  </tr></table>
+          <table class="timeTable">
+            <tr>
+              <td><i class="lni lni-alarm-clock"></i></td>
+              <td id="timeCell"></td>
+            </tr>
+          </table>
 
+          <br>
 
+          <div id="dateCell">
+            <i class="fa fa-calendar"></i>
+          </div>
 
+        </div>
+      </td>
+      <td class="borderCell td2">
+        <h3 class="formHeading">Enter Details</h3>
+        <form action="">
+          <label for="">Name</label><br>
+          <input type="text" name="" value=""><br>
+          <label for="">Mobile number (whatsapp number)</label><br>
+          <input type="number"><br>
+          <label for="">Choose Service</label><br>
+          <select name="services" id="services">
+            <option value=""></option>
+            <option value="haircut">Haircut</option>
+            <option value="haircolor">Hair Color</option>
+            <option value="hairstyling">Hair Styling</option>
+          </select>
+          <!-- <input type="text"><br><br> -->
+          <button>Confirm</button>
+        </form>
+      </td>
+    </tr>
+  </table>
 
 
 
@@ -72,6 +79,7 @@
     firebase.analytics();
 
     var stdNo = 1;
+
     function addItemsToList(date, name, slot, store, time, logo) {
 
       var imageDiv = document.getElementById("div111");
@@ -100,17 +108,19 @@
       dateC.appendChild(_date);
 
 
+
     }
 
     function fetchAllData() {
-      firebase.database().ref("customer2/1").once("value", function(snapshot) {
+      firebase.database().ref("customer2/4").once("value", function(snapshot) {
         let logo = snapshot.val().Logo;
         let date = snapshot.val().Date;
         let name = snapshot.val().Name;
         let slot = snapshot.val().Slot;
         let store = snapshot.val().Store;
         let time = snapshot.val().Time;
-        addItemsToList(date, name, slot, store, time, logo);
+        let services = snapshot.val().Services;
+        addItemsToList(date, name, slot, store, time, logo, services);
 
 
 
