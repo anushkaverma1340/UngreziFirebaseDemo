@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <table class="biggerDiv"><tr class="tr">
+    <td   class="td1 div">
+      <div id="div111" class="div111">
+      </div>
+      <br>
+      <div id="div112" class="div112">
+
+        <table class="timeTable"><tr>
+          <td><i class="lni lni-alarm-clock"></i></td>
+          <td id="timeCell"></td>
+        </tr></table>
+
+        <br>
+
+        <div id="dateCell">
+          <i class="fa fa-calendar"></i>
+        </div>
+
+      </div>
+    </td>
+    <td class="borderCell td2">
+      <h3 class="formHeading">Enter Details</h3>
+      <form action="">
+        <label for="">Name</label><br>
+        <input type="text" name="" value=""><br>
+        <label for="">Mobile number (whatsapp number)</label><br>
+        <input type="number"><br>
+        <label for="">Choose Service</label><br>
+        <input type="text"><br><br>
+        <button >Confirm</button>
+      </form>
+    </td>
+  </tr></table>
+
+
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyA1kA6yIR8F-xyqwbjCVwv3joTk-Iq8FtA",
+      authDomain: "fir-2a2b0.firebaseapp.com",
+      projectId: "fir-2a2b0",
+      storageBucket: "fir-2a2b0.appspot.com",
+      messagingSenderId: "212273609255",
+      appId: "1:212273609255:web:bb4818ce1ecbc40fe6ec02",
+      measurementId: "G-77NXSM0RQ8"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    var stdNo = 1;
+    function addItemsToList(date, name, slot, store, time, logo) {
+
+      var imageDiv = document.getElementById("div111");
+      var _logo = document.createElement('img');
+      _logo.src = logo;
+      imageDiv.appendChild(_logo);
+
+      var div1 = document.getElementById("div111");
+      var _store = document.createElement('p');
+      _store.innerHTML = store + " Meeting";
+      div1.appendChild(_store);
+
+      var timeC = document.getElementById("timeCell");
+      var _time = document.createElement('h3');
+      _time.innerHTML = " " + time;
+      timeC.appendChild(_time);
+
+      var timeC = document.getElementById("timeCell");
+      var _slot = document.createElement('p');
+      _slot.innerHTML = " " + slot + " Meeting";
+      timeC.appendChild(_slot);
+
+      var dateC = document.getElementById("dateCell");
+      var _date = document.createElement('h3');
+      _date.innerHTML = " " + date;
+      dateC.appendChild(_date);
+
+
+    }
+
+    function fetchAllData() {
+      firebase.database().ref("customer2/1").once("value", function(snapshot) {
+        let logo = snapshot.val().Logo;
+        let date = snapshot.val().Date;
+        let name = snapshot.val().Name;
+        let slot = snapshot.val().Slot;
+        let store = snapshot.val().Store;
+        let time = snapshot.val().Time;
+        addItemsToList(date, name, slot, store, time, logo);
+
+
+
+      });
+    }
+    window.onload = fetchAllData;
+  </script>
+
+
+</body>
+
+</html>

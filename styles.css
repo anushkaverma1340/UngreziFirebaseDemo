@@ -1,0 +1,98 @@
+body {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.biggerDiv {
+  width: 80%;
+  height: 400px;
+  border: 1px solid grey;
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 100px;
+  box-shadow: 0 0 10px 2px grey;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.biggerDiv .tr .td1 {
+  border-right: 0.5px solid #000000;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* table tr td:last-of-type {
+  border: none;
+} */
+
+.td1{
+  padding-left: 50px;
+}
+
+.td2{
+  padding-left: 100px;
+  padding: auto;
+  text-align: left;
+  line-height: 30px;
+}
+
+.div111{
+  text-align: center;
+}
+
+.div112{
+  text-align: left;
+  line-height: 5px;
+}
+
+img{
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0;
+  border: 1px solid black;
+}
+
+.timeTable{
+  margin-bottom: 40px;
+}
+
+#timeCell{
+  margin-bottom: 40px;
+}
+
+i{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+h3{
+  display: inline-block;
+  width: 400px;
+  margin: 0;
+  color: #F9692D;
+}
+
+.formHeading {
+  font-weight: bolder;
+  font-size: 26px;
+  line-height: 31px;
+  color: #F9692D;
+}
+
+input{
+  width: 300px;
+  height: 30px;
+}
+
+button{
+  border: 0px;
+  padding: auto 20px;
+  font-size: inherit;
+  border-radius: 35%;
+  height: 30px;
+  width:100px;
+  background-color: #F9692D;
+  color: white;
+}
